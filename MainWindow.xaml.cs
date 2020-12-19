@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ToDo_Project.Core;
+using ToDo_Project.Viewers;
 
 namespace ToDo_Project
 {
@@ -20,9 +10,51 @@ namespace ToDo_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        private TaskList taskList;
+
+        private TaskListView taskListView;
+        private TaskInfoView taskInfoView;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            Init();
+            SubscribeEvents();
+            Task a = new Task("Test task");
+            taskList.Add(a);
+            Console.WriteLine(a.id);
+        }
+
+        private void Init()
+        {
+            InitModels();
+            InitViewers();
+        }
+
+        private void InitModels()
+        {
+            taskList = new TaskList();
+        }
+
+        private void InitViewers()
+        {
+            taskListView = new TaskListView(TaskListGrid, taskList);
+            taskInfoView = new TaskInfoView(this);
+        }
+
+        private void SubscribeEvents()
+        {
+            taskList.AddTaskEvent += taskListView.Add;
+            taskList.RemoveTaskEvent += taskListView.Remove;
+            taskList.SelectTaskEvent += taskInfoView.Output;
+            DeleteTask.Click += Delete;
+        }
+
+        private void Delete(object sender, RoutedEventArgs args)
+        {
+            if (taskList.ExistsSelectedTask())
+                taskList.Remove(taskList.SelectedTask);
         }
     }
 }
