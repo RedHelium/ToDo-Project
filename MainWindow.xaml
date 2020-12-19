@@ -17,6 +17,8 @@
             <Button Name="OpenTagsWindow" Content="Тэги" FontSize="20" Width="100" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="25,0,0,28" />
             <Button Name="DeleteTask" Content="Удалить" FontSize="20" Width="100" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="150,0,0,28" />
             <Button Name="MarkTask" Content="Отметить" FontSize="20" Width="100" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="275,0,0,28" />
+            <Button Name="CreateTask" Content="+" FontSize="32" Width="50" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="400,0,0,28" />
+
         </Grid>
         <Grid Name="TaskListGrid" VerticalAlignment="Top" Height="371"/>
     </Grid>

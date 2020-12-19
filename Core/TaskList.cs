@@ -16,11 +16,11 @@ namespace ToDo_Project.Core
 
     public sealed class TaskList
     {
-        private readonly Task emptyTask = new Task("Empty Task");
+        private readonly Task emptyTask = new Task();
 
         private List<Task> tasks = new List<Task>();
-        
-        public Task SelectedTask { get; private set; }
+
+        public Task SelectedTask;
 
         public EventHandler<TaskEventArgs> AddTaskEvent;
         public EventHandler<TaskEventArgs> RemoveTaskEvent;
@@ -39,6 +39,8 @@ namespace ToDo_Project.Core
             tasks.Add(task);
 
             AddTaskEvent?.Invoke(this, new TaskEventArgs(task));
+
+            Select(task);
         }
 
         public void Remove(Task task)

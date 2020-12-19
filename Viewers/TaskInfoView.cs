@@ -22,5 +22,11 @@ namespace ToDo_Project.Viewers
             description.Text = args.task.description;
 
         }
+
+        public void Clear(object sender, TaskEventArgs args)
+        {
+            title.Text = string.Empty;
+            description.Text = string.Empty;
+        }
     }
 }

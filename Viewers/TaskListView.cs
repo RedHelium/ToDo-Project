@@ -25,17 +25,21 @@ namespace ToDo_Project.Viewers
         private Grid parent;
         private TaskList taskList;
 
+        public Button SelectedButton;
+
         public TaskListView(Grid parent, TaskList taskList)
         {
             this.parent = parent;
             this.taskList = taskList;
         }
 
+
         public void Add(object sender, TaskEventArgs args)
         {
             Button button = new Button();
             button.Click += Select;
             button.Content = args.task.title;
+            SelectedButton = button;
 
             parent.Children.Add(button);
             taskButtons.Add(new TaskButton(args.task, button));
@@ -58,6 +62,7 @@ namespace ToDo_Project.Viewers
         {
             Button selectedTaskButton = sender as Button;
             Task selectedTask = taskButtons.SingleOrDefault(x => x.button.Equals(selectedTaskButton)).task;
+            SelectedButton = selectedTaskButton;
 
             taskList.Select(selectedTask);
         }
