@@ -7,6 +7,34 @@
         mc:Ignorable="d"
         Title="ToDo List" Height="600" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Name="MainGrid">
+        <Menu VerticalAlignment="Top" Height="20">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Новая задача"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Импорт задач"></MenuItem>
+                <MenuItem Header="Экспорт задач"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Выход"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Редактирование">
+                <MenuItem Header="Удалить задачу"></MenuItem>
+                <MenuItem Header="Отметить задачу"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Добавить тэги"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Инструменты">
+                <MenuItem Header="История действий"></MenuItem>
+                <MenuItem Header="Редактор тэгов"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <ToolBar VerticalAlignment="Top" Height="35" Margin="0,20,0,0">
+            <Button Name="TB_Create" Content="Создать" />
+            <Button Name="TB_Remove" Content="Удалить" />
+            <Separator/>
+            <Button Name="TB_Mark" Content="Тэги" />
+            <Button Name="TB_Tags" Content="Отметить" />
+        </ToolBar>
 
         <Grid Name="TaskInfoGrid" VerticalAlignment="Bottom" Height="200">
             <Label Name="TaskTitleLabel" Content="Task Title" FontSize="16" FontWeight="Bold" Margin="25,5,0,0" Height="30" Width="400" HorizontalAlignment="Left" VerticalAlignment="Top" />
@@ -20,6 +48,6 @@
             <Button Name="CreateTask" Content="+" FontSize="32" Width="50" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="400,0,0,28" />
 
         </Grid>
-        <Grid Name="TaskListGrid" VerticalAlignment="Top" Height="371"/>
+        <Grid Name="TaskListGrid" VerticalAlignment="Top" Height="320" Margin="0,50,0,0"/>
     </Grid>
 </Window>
